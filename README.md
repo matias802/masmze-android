@@ -148,3 +148,4 @@ El `AAssetManager` ya está inicializado en `nativeInit()` y disponible en C com
 ## Licencia
 
 GPL v3+ — igual que el proyecto original de GreatCorn.
+# masmze-android
