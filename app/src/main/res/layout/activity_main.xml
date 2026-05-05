@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout principal de MASMZE-3D Android
+    ──────────────────────────────────────
+    • SurfaceView (fondo) — recibe el render OpenGL ES
+    • GameOverlayView (encima) — joystick virtual y botones táctiles
+-->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- Superficie OpenGL ES -->
+    <SurfaceView
+        android:id="@+id/gameSurface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Controles táctiles superpuestos -->
+    <com.greatcorn.masmze.GameOverlayView
+        android:id="@+id/gameOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+
+</FrameLayout>

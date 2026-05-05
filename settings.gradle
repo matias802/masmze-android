@@ -1,0 +1,2 @@
+rootProject.name = "MASMZE-3D"
+include ':app'

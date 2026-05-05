@@ -1,0 +1,21 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Android
+local.properties
+*.iml
+
+# APKs
+*.apk
+
+# Logs
+*.log
+
+# CMake
+.cxx/
+
+# Kotlin/Android Studio
+.idea/
+

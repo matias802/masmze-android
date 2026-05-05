@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.greatcorn.masmze'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.greatcorn.masmze"
+        minSdk 21          // Android 5.0 — soporte amplio + OpenGL ES 2.0 garantizado
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        // ABIs a compilar:
+        //   arm64-v8a  : dispositivos modernos (flagship/mid-range desde 2015)
+        //   armeabi-v7a: dispositivos de 32 bits más antiguos
+        // x86/x86_64 se omiten (emulador) para reducir tamaño del APK.
+        ndk {
+            abiFilters "arm64-v8a", "armeabi-v7a"
+        }
+
+        externalNativeBuild {
+            cmake {
+                // Máxima optimización en CMake
+                arguments "-DCMAKE_BUILD_TYPE=Release"
+                cFlags   "-O3 -ffast-math -funroll-loops"
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/jni/CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled   true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Strip símbolos de debug para reducir tamaño de .so
+            
+               
+        }
+        debug {
+            jniDebuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions { jvmTarget = '17' }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+}
